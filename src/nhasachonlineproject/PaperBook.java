@@ -1,4 +1,4 @@
-package nhasachonline;
+package nhasachonlineproject;
 
 import java.util.Scanner;
 
