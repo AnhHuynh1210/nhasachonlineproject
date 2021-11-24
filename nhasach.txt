@@ -1,0 +1,32 @@
+	NHASACHONLINE PROGRAMING
+	------------------------
+#Ngaythang
+class Ngaythangnam()
+
+#Sach
+class Sach(Masach, ten, tacgia, nhaxuatban, noidung, don gia, soluong)
+class Sachgiay extends Sach(kichthuoc, loaibia, soluongkho)
+class Sachfile extends Sach((pdf,EPUB), dungluong)
+class ListSach(Sachgiay, Sachfile, addsachgiay, addsachfile, xoasachgiay, xoasachfile)
+
+#Khach
+class Khach(id, ten, sđt, diachi)
+class ListKhach(Khach, addkhach, suathongtin, xoakhach)
+
+#Muahang
+class Donhang(madonhang, Khach, Giohang)
+class Giohang((Sachgiay,Sachfile), soluong)
+class Muasach(Giohang, addsachgiay, addsachfile, soluong, xoasachgiay, xoasachfile)
+
+#Nhanvien
+class Thongtinnhanvien(id, ten, sdt, diachi)
+class Nhanvienfull extends Thongtinnhanvien((quanly, giaohang), luongthang)
+class Nhanvienpart extends Thongtinnhanvien((quanly, giaohang), luongquanly, luonggiaohang(solangiaohang), luong2cv)
+class Nhanvien(Nhanvienfull, Nhanvienpart, addnhanvienfull, addnhanvienparttime, xoafull, xoapart)
+
+#Phuong thuc rieng
+class Methods() -> phương thức riêng dùng để xử lý dữ liệu
+
+
+
+
