@@ -3,14 +3,14 @@ package nhasachonlineproject;
 import java.util.Scanner;
 
 public class Sach {
-	private int bookId;	//ID cá»§a sĂ¡ch
-	private String bookName;	//TĂªn cá»§a sĂ¡ch
-	private String author;	//TĂ¡c giáº£ cá»§a sĂ¡ch
-	private String publisher;	//NhĂ  xuáº¥t báº£n
-	private String description;	//MĂ´ táº£ sĂ¡ch
-	private String price;	//GiĂ¡ cá»§a sĂ¡ch
-	private String page;	//Sá»‘ trang cá»§a sĂ¡ch
-	private static int numberOfBooks = 0; //GiĂ¡ trá»‹ cáº­p nháº­t cho ID sĂ¡ch
+	private int bookId;	//ID của sách
+	private String bookName;	//Tên của sách
+	private String author;	//Tác giả của sách
+	private String publisher;	//Nhà xuất bản
+	private String description;	//Mô tả sách
+	private String price;	//Giá của sách
+	private String page;	//Số trang của sách
+	private static int numberOfBooks = 0; //Giá trị cập nhật cho ID sách
 	
 	
 	public Sach() {
@@ -85,10 +85,11 @@ public class Sach {
 		this.page = page;
 	}
 
-
-	//Nháº­p thĂ´ng tin chung cho sĂ¡ch (sĂ¡ch báº£n giáº¥y, sĂ¡ch báº£n file)
+	//Nhập thông tin chung cho sách (sách bản giấy, sách bản file)
 	public void setBookInfo() {
 		Scanner input = new Scanner(System.in);
+		boolean checkPrice = false;
+		boolean checkPage = false;
 		System.out.println("Enter name of book:");
 		this.setBookName(input.nextLine());
 		System.out.println("Enter author of book:");
@@ -97,25 +98,49 @@ public class Sach {
 		this.setPublisher(input.nextLine());
 		System.out.println("Enter description:");
 		this.setDescription(input.nextLine());
-		System.out.println("Enter price of book:");
-		String priceOfBook = input.nextLine();
-		while (!Methods.checkNum(priceOfBook)) {
-			System.out.println("Please enter price again (number):");
-			priceOfBook = input.nextLine();
+		while (!checkPrice) {
+			try {
+				System.out.println("Enter price of book (0-99999999):");
+				String priceBook = input.nextLine();
+				double priceDouble = Double.parseDouble(priceBook);
+				while (priceDouble < 0) {
+					System.out.println("Please enter price of book again (0-99999999)!!!!");
+					priceBook = input.nextLine();
+					priceDouble = Double.parseDouble(priceBook);
+				}
+				if (priceDouble >= 0 && priceDouble <= 99999999) {
+					this.setPrice(priceBook);
+					checkPrice = true;
+				}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Please enter price of book again (0-99999999)!!!!");
+			}
 		}
-		this.setPrice(priceOfBook);
-		System.out.println("Enter pages of book:");
-		String pageOfBook = input.nextLine();
-		while (!Methods.checkNum(pageOfBook)) {
-			System.out.println("Please enter pages again (number):");
-			pageOfBook = input.nextLine();
+		while (!checkPage) {
+			try {
+				System.out.println("Enter page of book (0-99999999):");
+				String pageBook = input.nextLine();
+				int pageInt = Integer.parseInt(pageBook);
+				while (pageInt < 0) {
+					System.out.println("Please enter page of book again (0-99999999)!!!!");
+					pageBook = input.nextLine();
+					pageInt = Integer.parseInt(pageBook);
+				}
+				if (pageInt >= 0 && pageInt <= 99999999) {
+					this.setPage(pageBook);
+					checkPage = true;
+				}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Please enter page of book again (0-99999999)!!!!");
+			}
 		}
-		this.setPage(pageOfBook);
 	}
 
 	@Override
 	public String toString() {
-		return "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$" + "\nID book:" + this.getBookId() + "\nThe name of book is:" + this.getBookName() + "\nThe author is:" + this.getAuthor() + "\nThe publisher is:" + this.getPublisher() + "\nThe description is:" + this.getDescription() + "\nPrice is:" + this.getPrice() + "\nNumber of pages:" + this.getPage() + "\n";
+		return "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" + "\nID book:" + this.getBookId() + "\nThe name of book is:" + this.getBookName() + "\nThe author is:" + this.getAuthor() + "\nThe publisher is:" + this.getPublisher() + "\nThe description is:" + this.getDescription() + "\nPrice is:" + this.getPrice() + "\nNumber of pages:" + this.getPage() + "\n";
 	}
-	
+
 }
