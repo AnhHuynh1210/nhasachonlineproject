@@ -11,7 +11,7 @@ public class Methods {
         return true;
     }
     
-    public static boolean checkRange(String yourstr, int first, int last){
+    public static boolean checkRangeInt(String yourstr, int first, int last){
         if (checkNum(yourstr)){
             int yournum = Integer.parseInt(yourstr);
             if (yournum >= first && yournum <= last){
