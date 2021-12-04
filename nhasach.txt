@@ -27,6 +27,9 @@ class Nhanvien(Nhanvienfull, Nhanvienpart, addnhanvienfull, addnhanvienparttime,
 #Phuong thuc rieng
 class Methods() -> phương thức riêng dùng để xử lý dữ liệu
 
+vip
+
+
 
 
 
